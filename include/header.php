@@ -6,7 +6,7 @@ $rowLogo = mysqli_fetch_assoc($result);
 
 <header class="header">
     <nav class="navbar navbar-expand-lg fixed-top" id="navbar-2">
-        <div class="container py-2"><a href="./"
+        <div class="container py-2"><a href="./home"
                 class="navbar-brand text-uppercase font-weight-bold"><img src="<?php echo $rowLogo['logo_image']; ?>"
                     width='151px' alt='logo'></a>
 
@@ -17,7 +17,7 @@ $rowLogo = mysqli_fetch_assoc($result);
 
                     <ul class="navbar-nav mx-auto text-center d-flex flex-row">
                         <li class="nav-item">
-                            <a href="./" class="btn nav-button d-flex justify-content-center align-items-center"  data-bs-toggle="tooltip" data-bs-placement="bottom" title="Home"><i class="icon-home"></i></a>
+                            <a href="./home" class="btn nav-button d-flex justify-content-center align-items-center"  data-bs-toggle="tooltip" data-bs-placement="bottom" title="Home"><i class="icon-home"></i></a>
                         </li>
                         <li class="nav-item dropdown">
                             <?php 

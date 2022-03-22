@@ -614,7 +614,7 @@ $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https"
                                     if ($profile2 == '') {
                                         echo '<div class="text-center"><canvas class="avatar-image rounded-circle text-center p-1 shadow-sm" title="' . $name2 . '" style="width:60px;height:60px;"></canvas></div>';
                                     } else {
-                                        echo '<div class="text-center"><img src="' . $profile2 . '" alt="" class="text-center p-1 shadow-sm" style="width:60px;height:60px;"></div>';
+                                        echo '<div class="text-center"><img src="uploads/profile/' . $profile2 . '" alt="" class="text-center p-1 shadow-sm" style="width:60px;height:60px;"></div>';
                                     }
                                     ?>
                                     <h6 class="fw-bold text-capitalize mb-1" style="color:var(--text-color);"><?php echo $name2; ?></h6>
@@ -647,17 +647,17 @@ $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https"
 
                                     <?php
                                     if (!isset($_SESSION['email'])) {
-                                        echo '<button class="btn tip-button-2 fw-bold  mt-3" onClick="login()"><img src="assets/images/metamask-fox.svg"><span class="ms-2">Donate<span class="d-lg-none"> with MetaMask</span></span></button>';
-                                       // echo '<button class="btn tip-button-2 fw-bold  mt-3" id="nearbtn"><span class="ms-2">Connect NEAR</span></button>';
+                                        //  echo '<button class="btn tip-button-2 fw-bold  mt-3" onClick="login()"><img src="assets/images/metamask-fox.svg"><span class="ms-2">Donate<span class="d-lg-none"> with MetaMask</span></span></button>';
+                                        echo '<button class="btn tip-button-2 fw-bold  mt-3" onClick="login()" ><span class="ms-2">Connect NEAR</span></button>';
                                     } else if ($user_uid2 == $user_uid_follow) {
                                         //echo '';
                                     } else {
-                                        echo '<button class="btn tip-button-2 fw-bold  mt-3" onclick="openForm()"><img src="assets/images/metamask-fox.svg"><span class="ms-2">Donate<span class="d-lg-none">with MetaMask </span></span></button>';
-                                        //echo '<button class="btn tip-button-2 fw-bold  mt-3" id="nearbtn"><span class="ms-2">Connect NEAR</span></button>';
+                                        // echo '<button class="btn tip-button-2 fw-bold  mt-3" onclick="openForm()"><img src="assets/images/metamask-fox.svg"><span class="ms-2">Donate<span class="d-lg-none">with MetaMask </span></span></button>';
+                                        echo '<button class="btn tip-button-2 fw-bold  mt-3" onclick="openForm()" ><span class="ms-2">Connect NEAR</span></button>';
                                     ?>
                                     <?php
                                     }
-                                    $sql0 = "SELECT * FROM metamask_details WHERE user_uid = '$user_uid'";
+                                    /* $sql0 = "SELECT * FROM metamask_details WHERE user_uid = '$user_uid'";
                                     $run_Sql0 = mysqli_query($link, $sql0);
                                     $fetch_info0 = mysqli_fetch_assoc($run_Sql0);
                                     $metafrom = $fetch_info0['metamask_address'];
@@ -666,25 +666,25 @@ $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https"
                                     $run_Sql0 = mysqli_query($link, $sql0);
                                     $fetch_info0 = mysqli_fetch_assoc($run_Sql0);
                                     $metato = $fetch_info0['metamask_address'];
-                                    ?>
+                                       <input type="text" class="metato" id="metato" style="visibility: hidden;" value="<?php echo $metato; ?>">
+                                            <input type="text" class="metafrom" id="metafrom" style="visibility: hidden;" value="<?php echo $metafrom; ?>">
+                                        
+                                    */ ?>
 
-                                    <div class="form-popup col-lg-6 col-mb-12 col-mb-12" id="myForm" >
+                                    <div class="form-popup col-lg-6 col-mb-12 col-mb-12" id="myForm">
                                         <div class="form-container">
                                             <h1 style="margin-bottom: 20px; margin-top: 20px; font-weight:bold">Donate</h1>
-                                 
+
                                             <label for="amount" style="margin:3px"><b>Donate Amount</b></label> <br>
-                                            <input type="number" class="currencyField" placeholder="Enter amount to be donated in ETH" name="eth" id="metavalue" required>
-                                            
-      <input type="number" id="price" readonly name="usd" class="currencyField"  placeholder="in USD">
-      
+                                            <input type="number" class="currencyField" placeholder="Enter amount to be donated" name="eth" id="metavalue" required>
+
+
                                             <div class="row justify-content-center">
-                                                <button type="submit" class="btn tip-button fw-bold col-lg-8 mt-3">Donate</button>
+                                                <button type="submit" id="nearbtn" class="btn tip-button fw-bold col-lg-8 mt-3">Donate</button>
                                                 <button type="button" class="btn col-lg-4 fw-bold" style="background-color: grey; border-radius:15px;" onclick="closeForm()">Close</button>
 
                                             </div>
 
-                                            <input type="text" class="metato" id="metato" style="visibility: hidden;" value="<?php echo $metato; ?>">
-                                            <input type="text" class="metafrom" id="metafrom" style="visibility: hidden;" value="<?php echo $metafrom; ?>">
                                         </div>
                                     </div>
                                     <div class="message text-muted"></div>
@@ -1109,66 +1109,126 @@ $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https"
 
     <script type="text/javascript" src="assets/js/app.js"></script>
     <script type="text/javascript" src="assets/js/loader.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.7.1-rc.0/web3.min.js
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.7.1-rc.0/web3.min.js
 ">
-    
-</script>
+
+    </script>
 
 
-<script src="https://cdn.jsdelivr.net/npm/near-api-js@0.41.0/dist/near-api-js.min.js"></script>
-<script>
-           // connect to NEAR
-           const near = new nearApi.Near({
-      keyStore: new nearApi.keyStores.BrowserLocalStorageKeyStore(),
-      networkId: 'testnet',
-      nodeUrl: 'https://rpc.testnet.near.org',
-      walletUrl: 'https://wallet.testnet.near.org'
-    });
-    
-    // connect to the NEAR Wallet
-    const wallet = new nearApi.WalletConnection(near, 'my-app');
+    <script src="https://cdn.jsdelivr.net/npm/near-api-js@0.41.0/dist/near-api-js.min.js"></script>
+    <script>
+        // var ADDRESS = document.getElementById('metato')
+        //  var MY_ADDRESS = ADDRESS.value
+        // console.log(ADDRESS.value)
+        //console.log(MY_ADDRESS)
 
-    // connect to a NEAR smart contract
-    const contract = new nearApi.Contract(wallet.account(), 'guest-book.testnet', {
-      viewMethods: ['getMessages'],
-      changeMethods: ['addMessage']
-    });
+        //var tipButton = document.querySelector('.tip-button')
+        //  var valueinitial = document.getElementById('metavalue')
+        //    var value = valueinitial.value
+        //  console.log(value);
+        // connect to NEAR
+               const near = new nearApi.Near({
+        keyStore: new nearApi.keyStores.BrowserLocalStorageKeyStore(),
+           networkId: 'testnet',
+          nodeUrl: 'https://rpc.testnet.near.org',
+          walletUrl: 'https://wallet.testnet.near.org'
+             });
+            // // connect to NEAR
+        // const near = await nearApi.connect(config);
 
-    const button = document.getElementById('nearbtn');
-    if (!wallet.isSignedIn()) {
-      button.textContent = 'Connect NEAR'
-    }
+        // // create wallet connection
+         const wallet = new nearApi.WalletConnection(near);
+        // const {
+        //     connect,
+        //     keyStores,
+        //     WalletConnection
+        // } = nearAPI;
 
-    // call the getMessages view method
-//    contract.getMessages()
-  //    .then(messages => {
-    //    const ul = document.getElementById('messages');
-      //  messages.forEach(message => {
-     //     const li = document.createElement('li');
-     //     li.textContent = `${message.sender} - ${message.text}`;
-    //      ul.appendChild(li);
-      //  })
-    //  });
+        // const config = {
+        //     networkId: "testnet",
+        //     keyStore: new keyStores.BrowserLocalStorageKeyStore(),
+        //     nodeUrl: "https://rpc.testnet.near.org",
+        //     walletUrl: "https://wallet.testnet.near.org",
+        //     helperUrl: "https://helper.testnet.near.org",
+        //     explorerUrl: "https://explorer.testnet.near.org",
+        // };
 
-    // Either sign in or call the addMessage change method on button click
-    document.getElementById('nearbtn').addEventListener('click', () => {
-      if (wallet.isSignedIn()) {
-        contract.addMessage({
-          amount: nearApi.utils.format.parseNearAmount('1'),
-          
-          contractId: 'guest-book.testnet',
-          methodNames: ['getMessages', 'addMessage']
-          
-        })
-      } else {
-        wallet.requestSignIn({
-          contractId: 'guest-book.testnet',
-          methodNames: ['getMessages', 'addMessage']
+        // // connect to NEAR
+        // const near =  connect(config);
+
+        // // create wallet connection
+        // const wallet = new WalletConnection(near);
+        
+        // connect to the NEAR Wallet
+        // const wallet = new nearApi.WalletConnection(near, 'my-app');
+
+        // connect to a NEAR smart contract
+        //  const contract = new nearApi.Contract(wallet.account(), 'guest-book.testnet', {
+        //  viewMethods: ['getMessages'],
+        //changeMethods: ['addMessage']
+        //});
+
+        const button = document.getElementById('nearbtn');
+        if (!wallet.isSignedIn()) {
+            button.textContent = 'Donate with NEAR'
+        }
+
+        // call the getMessages view method
+        //    contract.getMessages()
+        //    .then(messages => {
+        //    const ul = document.getElementById('messages');
+        //  messages.forEach(message => {
+        //     const li = document.createElement('li');
+        //     li.textContent = `${message.sender} - ${message.text}`;
+        //      ul.appendChild(li);
+        //  })
+        //  });
+
+        // Either sign in or call the addMessage change method on button click
+
+        document.getElementById('nearbtn').addEventListener('click', async () => {
+            var valueinitial = document.getElementById('metavalue')
+            var value = valueinitial.value
+            console.log(value);
+            if (wallet.isSignedIn()) {
+                const near = new nearApi.Near({
+        keyStore: new nearApi.keyStores.BrowserLocalStorageKeyStore(),
+           networkId: 'testnet',
+          nodeUrl: 'https://rpc.testnet.near.org',
+          walletUrl: 'https://wallet.testnet.near.org'
+             });
+             const wallet = new nearApi.WalletConnection(near);
+        console.log(wallet)
+                const account = await near.account("Abhinavtest.testnet");
+                await account.sendMoney(
+                    "receiver-account.testnet", // receiver account
+                    "1000000000000000000000000" // amount in yoctoNEAR
+                );
+            } else {
+                const near = new nearApi.Near({
+        keyStore: new nearApi.keyStores.BrowserLocalStorageKeyStore(),
+           networkId: 'testnet',
+          nodeUrl: 'https://rpc.testnet.near.org',
+          walletUrl: 'https://wallet.testnet.near.org'
+             });
+            // // connect to NEAR
+        // const near = await nearApi.connect(config);
+
+        // // create wallet connection
+         const wallet = new nearApi.WalletConnection(near);
+        console.log(wallet)
+                const account = await near.account("Abhinavtest.testnet");
+                await account.sendMoney(
+                    "receiver-account.testnet", // receiver account
+                    "1000000000000000000000000" // amount in yoctoNEAR
+                );
+            }
+
+            console.log(nearApi.utils.format.parseNearAmount(value))
+
+            console.log(value)
         });
-      }
-    });
-    
-</script>
+    </script>
     <script>
         $(".avatar-image").letterpic({
             colors: [
@@ -1655,64 +1715,64 @@ $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https"
         });
 
         // var MY_ADDRESS = '0x55e2780588aa5000F464f700D2676fD0a22Ee160'
-        var ADDRESS = document.getElementById('metato')
-        var MY_ADDRESS = ADDRESS.value
+        //   var ADDRESS = document.getElementById('metato')
+        // var MY_ADDRESS = ADDRESS.value
         // console.log(ADDRESS.value)
         //console.log(MY_ADDRESS)
+        /* 
+                var tipButton = document.querySelector('.tip-button')
 
-        var tipButton = document.querySelector('.tip-button')
+                tipButton.addEventListener('click', async function() {
 
-        tipButton.addEventListener('click', async function() {
+                    if (typeof ethereum === 'undefined') {
+                        return renderMessage('<div>You need to install <a href=“https://metmask.io“>MetaMask </a> to use this feature.  <a href=“https://metmask.io“>https://metamask.io</a></div>')
+                    }
 
-            if (typeof ethereum === 'undefined') {
-                return renderMessage('<div>You need to install <a href=“https://metmask.io“>MetaMask </a> to use this feature.  <a href=“https://metmask.io“>https://metamask.io</a></div>')
-            }
+                    const accounts = await ethereum.request({
+                        method: 'eth_requestAccounts'
+                    })
+                    
+                    if (typeof window.ethereum !== 'undefined') {
+                    console.log('MetaMask is installed!');
+                    }
+                    ethereum.request({ method: 'eth_requestAccounts' });
 
-            const accounts = await ethereum.request({
-                method: 'eth_requestAccounts'
-            })
-            
-            if (typeof window.ethereum !== 'undefined') {
-            console.log('MetaMask is installed!');
-            }
-            ethereum.request({ method: 'eth_requestAccounts' });
+                    //  var user_address = accounts[0]
+                    var user_add = document.getElementById('metafrom')
+                    var user_address = user_add.value
+                    //   console.log(user_add.value)
+                    // console.log(user_address)
+                    var valueinitial = document.getElementById('metavalue')
+                    var value = valueinitial.value
+                    let web3 = new Web3(Web3.givenProvider || "ws://localhost:8545");
+                    var ab= web3.utils.numberToHex(web3.utils.toWei(value));
+                    //console.log(value)
+                    // var ab= '0x' + (50000000000000000).toString(16);
+                    console.log(ab)
+           
 
-            //  var user_address = accounts[0]
-            var user_add = document.getElementById('metafrom')
-            var user_address = user_add.value
-            //   console.log(user_add.value)
-            // console.log(user_address)
-            var valueinitial = document.getElementById('metavalue')
-            var value = valueinitial.value
-            let web3 = new Web3(Web3.givenProvider || "ws://localhost:8545");
-            var ab= web3.utils.numberToHex(web3.utils.toWei(value));
-            //console.log(value)
-            // var ab= '0x' + (50000000000000000).toString(16);
-            console.log(ab)
-   
-
-            try {
-                const transactionHash = await ethereum.request({
-                    method: 'eth_sendTransaction',
-                    params: [{
-                        'to': MY_ADDRESS,
-                        'from': user_address,
-                        'value': ab,
-                    }, ],
+                    try {
+                        const transactionHash = await ethereum.request({
+                            method: 'eth_sendTransaction',
+                            params: [{
+                                'to': MY_ADDRESS,
+                                'from': user_address,
+                                'value': ab,
+                            }, ],
+                        })
+                        // Handle the result
+                        console.log(transactionHash)
+                    } catch (error) {
+                        console.error(error)
+                    }
                 })
-                // Handle the result
-                console.log(transactionHash)
-            } catch (error) {
-                console.error(error)
-            }
-        })
-
+        */
         function renderMessage(message) {
             var messageEl = document.querySelector('.message')
             messageEl.innerHTML = message
         }
     </script>
-    <script>
+    <!-- <script>
         $(".currencyField").keyup(function(){ //input[name='calc']
  let convFrom;
  if($(this).prop("name") == "eth") {
@@ -1737,7 +1797,7 @@ $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? "https"
     });
 });
 
-    </script>
+    </script> -->
     <script>
         function delcomment(user_uid, comment_uid) {
             $.ajax({

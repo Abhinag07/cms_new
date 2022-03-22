@@ -10,61 +10,62 @@ require_once("./router.php");
 // In the URL -> http://localhost
 // The output -> Index
 //user panel
-get('./near_cms_medium/', 'home.php');
-get('./near_cms_medium/home', 'home.php');
-get('./near_cms_medium/register', 'signup-user.php');
-get('./near_cms_medium/login-user', 'login-user.php');
-get('./near_cms_medium/logout', 'logout-user.php');
-get('./near_cms_medium/forgot-password', 'forgot-password.php');
-get('./near_cms_medium/create-story', 'create-story.php');
-get('./near_cms_medium/stories', 'stories.php');
-get('./near_cms_medium/user-stats', 'user-stats.php');
-get('./near_cms_medium/audience-stats', 'audience-stats.php');
-get('./near_cms_medium/reading-list', 'reading-list.php');
-get('./near_cms_medium/user-settings', 'user-settings.php');
-get('./near_cms_medium/about-us', 'about-us.php');
-get('./near_cms_medium/contact-us', 'contact-us.php');
-get('./near_cms_medium/edit-story/$edit_req', 'edit-story.php');
-get('./near_cms_medium/privacy-policy', 'privacy-policy.php');
-get('./near_cms_medium/cookies-policy', 'cookies-policy.php');
-get('./near_cms_medium/terms_of_use', 'terms_of_use.php');
+//get('./cms_new/', 'home.php');
+get('./cms_new/home', 'home.php');
+get('./cms_new/', 'home.php');
+get('./cms_new/register', 'signup-user.php');
+get('./cms_new/login-user', 'login-user.php');
+get('./cms_new/logout', 'logout-user.php');
+get('./cms_new/forgot-password', 'forgot-password.php');
+get('./cms_new/create-story', 'create-story.php');
+get('./cms_new/stories', 'stories.php');
+get('./cms_new/user-stats', 'user-stats.php');
+get('./cms_new/audience-stats', 'audience-stats.php');
+get('./cms_new/reading-list', 'reading-list.php');
+get('./cms_new/user-settings', 'user-settings.php');
+get('./cms_new/about-us', 'about-us.php');
+get('./cms_new/contact-us', 'contact-us.php');
+get('./cms_new/edit-story/$edit_req', 'edit-story.php');
+get('./cms_new/privacy-policy', 'privacy-policy.php');
+get('./cms_new/cookies-policy', 'cookies-policy.php');
+get('./cms_new/terms_of_use', 'terms_of_use.php');
 //dashboard
-get('./near_cms_medium/dashboard/', 'dashboard/index.php');
-get('./near_cms_medium/dashboard/login', 'dashboard/login.php');
-get('./near_cms_medium/dashboard/logout', 'dashboard/logout.php');
-get('./near_cms_medium/dashboard/allpost', 'dashboard/allpost.php');
-get('./near_cms_medium/dashboard/trash-stories', 'dashboard/trash-stories.php');
-get('./near_cms_medium/dashboard/all-tags', 'dashboard/all-tags.php');
-get('./near_cms_medium/dashboard/add-tag', 'dashboard/add-tag.php');
-get('./near_cms_medium/dashboard/all-users', 'dashboard/all-users.php');
-get('./near_cms_medium/dashboard/add-user', 'dashboard/add-user.php');
-get('./near_cms_medium/dashboard/addpost', 'dashboard/addpost.php');
-get('./near_cms_medium/dashboard/followusers', 'dashboard/followusers.php');
-get('./near_cms_medium/dashboard/postlike', 'dashboard/postlike.php');
-get('./near_cms_medium/dashboard/savepost', 'dashboard/savepost.php');
-get('./near_cms_medium/dashboard/newsletter', 'dashboard/newsletter.php');
-get('./near_cms_medium/dashboard/comments', 'dashboard/comments.php');
-get('./near_cms_medium/dashboard/viewlogo', 'dashboard/viewlogo.php');
-get('./near_cms_medium/dashboard/nav', 'dashboard/nav.php');
-get('./near_cms_medium/dashboard/social', 'dashboard/social.php');
-get('./near_cms_medium/dashboard/editor', 'dashboard/editor.php');
-get('./near_cms_medium/dashboard/contactus', 'dashboard/contactus.php');
-get('./near_cms_medium/dashboard/aboutus', 'dashboard/aboutus.php');
-get('./near_cms_medium/dashboard/aboutus', 'dashboard/privacy-policy.php');
-get('./near_cms_medium/dashboard/aboutus', 'dashboard/cookies-policy.php');
-get('./near_cms_medium/dashboard/aboutus', 'dashboard/terms.php');
-get('./near_cms_medium/dashboard/metamask', 'dashboard/metamask.php');
-get('./near_cms_medium/dashboard/change-password', 'dashboard/change-password.php');
+get('./cms_new/dashboard/', 'dashboard/index.php');
+get('./cms_new/dashboard/login', 'dashboard/login.php');
+get('./cms_new/dashboard/logout', 'dashboard/logout.php');
+get('./cms_new/dashboard/allpost', 'dashboard/allpost.php');
+get('./cms_new/dashboard/trash-stories', 'dashboard/trash-stories.php');
+get('./cms_new/dashboard/all-tags', 'dashboard/all-tags.php');
+get('./cms_new/dashboard/add-tag', 'dashboard/add-tag.php');
+get('./cms_new/dashboard/all-users', 'dashboard/all-users.php');
+get('./cms_new/dashboard/add-user', 'dashboard/add-user.php');
+get('./cms_new/dashboard/addpost', 'dashboard/addpost.php');
+get('./cms_new/dashboard/followusers', 'dashboard/followusers.php');
+get('./cms_new/dashboard/postlike', 'dashboard/postlike.php');
+get('./cms_new/dashboard/savepost', 'dashboard/savepost.php');
+get('./cms_new/dashboard/newsletter', 'dashboard/newsletter.php');
+get('./cms_new/dashboard/comments', 'dashboard/comments.php');
+get('./cms_new/dashboard/viewlogo', 'dashboard/viewlogo.php');
+get('./cms_new/dashboard/nav', 'dashboard/nav.php');
+get('./cms_new/dashboard/social', 'dashboard/social.php');
+get('./cms_new/dashboard/editor', 'dashboard/editor.php');
+get('./cms_new/dashboard/contactus', 'dashboard/contactus.php');
+get('./cms_new/dashboard/aboutus', 'dashboard/aboutus.php');
+get('./cms_new/dashboard/aboutus', 'dashboard/privacy-policy.php');
+get('./cms_new/dashboard/aboutus', 'dashboard/cookies-policy.php');
+get('./cms_new/dashboard/aboutus', 'dashboard/terms.php');
+get('./cms_new/dashboard/metamask', 'dashboard/metamask.php');
+get('./cms_new/dashboard/change-password', 'dashboard/change-password.php');
 
-get('./near_cms_medium/about/$about_req', 'about.php');
-get('./near_cms_medium/topic/$topic_req', 'topic.php');
-get('./near_cms_medium/search/$search_req', 'search.php');
-get('./near_cms_medium/$username_profile', 'profile.php');
+get('./cms_new/about/$about_req', 'about.php');
+get('./cms_new/topic/$topic_req', 'topic.php');
+get('./cms_new/search/$search_req', 'search.php');
+get('./cms_new/$username_profile', 'profile.php');
 
 
-get('./near_cms_medium/$username_post/$post_slug', 'single-post.php');
+get('./cms_new/$username_post/$post_slug', 'single-post.php');
 
-//get('./near_cms_medium/$username_post/$post_slug', 'extra.php');
+//get('./cms_new/$username_post/$post_slug', 'extra.php');
 
 
 
